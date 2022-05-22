@@ -32,6 +32,16 @@ class List{
         this->head=temp;
     }
 
+    //inserimento in coda
+    void insertTail(T val){
+        if(this->isEmpty()){
+            insertHead(val);
+            return;
+        }
+
+        
+    }
+
     //eliminazione nodo testa
     void removeHead(){
         if(this->isEmpty()){
@@ -43,13 +53,13 @@ class List{
         delete temp;
         }
 
-
+    
 
     friend ostream& operator<<(ostream& os, List<T>& list){
         os << "List Head: " << list.head << endl;
 
         Node<T> *ptr = list.head;
-        
+
         while (ptr != nullptr){
             os << *ptr << " - ";  
             ptr=ptr->getNext();
