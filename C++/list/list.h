@@ -33,7 +33,7 @@ class List{
     }
 
     //eliminazione nodo testa
-    void removeHead(T val){
+    void removeHead(){
         if(this->isEmpty()){
             cout << "Lista vuota, nulla da rimuovere" << endl;
             return;
@@ -49,6 +49,7 @@ class List{
         os << "List Head: " << list.head << endl;
 
         Node<T> *ptr = list.head;
+        
         while (ptr != nullptr){
             os << *ptr << " - ";  
             ptr=ptr->getNext();

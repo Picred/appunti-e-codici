@@ -23,6 +23,7 @@ class Node{
             os << "Node Val: " << node.val;
             os << " Node Next: " << node.next;
 
+            os << endl;
             return os;
         }
 
