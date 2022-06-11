@@ -65,4 +65,22 @@ int main(){
     } 
     cout << "]";
 
+
+cout << "\n\n----------INSERTION SORT----------\n";
+
+    cout << "Vettore non ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        vett[i] = dim-i;
+        cout  << vett[i] << " ";
+    }
+    cout << "]" << endl << endl;
+
+    cout << "Ordiniamolo..." << endl;
+    insertionSort(vett,dim);
+
+    cout << "Vettore ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        cout  << vett[i] << " ";
+    } 
+    cout << "]";
 }

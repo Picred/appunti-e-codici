@@ -73,5 +73,19 @@ namespace sorting{
             swap(vett[i],vett[indexMin]);
         }
     }
+
+    void insertionSort(int vett[], int dim){
+        int temp,j;
+
+        for(int i=1;i<dim;i++){
+            temp=vett[i];
+            for(j=i;j>=0;j--){
+                if(temp<vett[j-1])
+                    vett[j]=vett[j-1];
+                else break;
+            }
+            vett[j]=temp;
+        }
+    }
 }
 #endif
