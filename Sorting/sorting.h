@@ -1,8 +1,6 @@
 #ifndef SORTING_H
 #define SORTING_H
 
-#define dim 10
-
 namespace sorting{
 
     void swap(int& x, int& y){
@@ -11,7 +9,7 @@ namespace sorting{
         y=temp;
     }
 
-    bool dicotomicaRicorsiva(int vett[dim], int key, int start, int end){
+    bool dicotomicaRicorsiva(int vett[], int key, int start, int end){
     if(start>end){
         return false;
     }
@@ -64,5 +62,16 @@ namespace sorting{
         }
     }
 
+    void selectionSort(int vett[], int dim){
+        int indexMin;
+        for(int i=0; i<dim-1;i++){
+            indexMin=i;
+            for(int j=i+1;j<dim;j++){
+                if(vett[j]<vett[i])
+                    indexMin=j;
+            }
+            swap(vett[i],vett[indexMin]);
+        }
+    }
 }
 #endif

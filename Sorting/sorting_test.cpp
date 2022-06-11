@@ -2,6 +2,8 @@
 #include<cstdlib>
 #include "sorting.h"
 
+#define dim 10
+
 using namespace std;
 using namespace sorting;
 
@@ -28,7 +30,6 @@ int main(){
 /////////////////////////////////////////////////////////////////////////
     cout << "\n\n----------ORDINAMENTO PER SCAMBIO----------\n";
     
-
     cout << "Vettore non ordinato[ " ;
     for(int i=0; i<dim; i++){
         vett[i] = dim-i;
@@ -44,4 +45,24 @@ int main(){
         cout  << vett[i] << " ";
     } 
     cout << "]";
+
+    /////////////////////////////////////////////////////////////////////////
+    cout << "\n\n----------SELECTION SORT----------\n";
+
+    cout << "Vettore non ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        vett[i] = dim-i;
+        cout  << vett[i] << " ";
+    }
+    cout << "]" << endl << endl;
+
+    cout << "Ordiniamolo..." << endl;
+    selectionSort(vett,dim);
+
+    cout << "Vettore ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        cout  << vett[i] << " ";
+    } 
+    cout << "]";
+
 }
