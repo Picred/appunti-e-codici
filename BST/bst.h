@@ -199,6 +199,24 @@ class BST{
             return y;
         }
 
+        // BSTNode<T>* remove(T key){
+        //     if(this->isEmpty()){
+        //         return nullptr;
+        //     }
+
+        //     BSTNode<T>* toRemove= this->search(key);
+        //     if(toRemove==nullptr)
+        //         return nullptr;
+
+        //     if(toRemove->right==nullptr && toRemove->left==nullptr){
+        //         if(toRemove->parent->right==toRemove)
+        //             toRemove->parent->right==nullptr;
+        //         else if(toRemove->parent->left==toRemove)
+        //             toRemove->parent->left==nullptr;
+        //         return toRemove;
+        //     }
+        //     // return toRemove;
+        // }
 };
 
 
