@@ -83,4 +83,23 @@ cout << "\n\n----------INSERTION SORT----------\n";
         cout  << vett[i] << " ";
     } 
     cout << "]";
+
+
+    cout << "\n\n----------MERGE SORT----------\n";
+
+    cout << "Vettore non ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        vett[i] = dim-i;
+        cout  << vett[i] << " ";
+    }
+    cout << "]" << endl << endl;
+
+    cout << "Ordiniamolo..." << endl;
+    mergeSort(vett,0,dim-1);
+
+    cout << "Vettore ordinato[ " ;
+    for(int i=0; i<dim; i++){
+        cout  << vett[i] << " ";
+    } 
+    cout << "]";
 }

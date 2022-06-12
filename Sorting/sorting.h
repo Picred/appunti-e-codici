@@ -1,5 +1,7 @@
 #ifndef SORTING_H
 #define SORTING_H
+#include <climits>
+#include <cmath>
 
 namespace sorting{
 
@@ -87,5 +89,51 @@ namespace sorting{
             vett[j]=temp;
         }
     }
+
+    void merge(int A[],int p, int q,int r){
+        
+        //Array sinistro L[n1], Array destro R[n2];
+        int n1=q-p+1;
+        int n2=r-q;
+
+        int* L=new int[n1+1];
+        int* R=new int[n2+1];
+
+        for(int i=0; i<=n1;i++){
+            L[i]=A[p+i];
+        }
+
+        for(int j=0; j<=n2;j++){
+            R[j-1]=A[q+j];
+        }
+
+        L[n1]=INT_MAX;
+        R[n2]=INT_MAX;
+
+        //confronto L ed R e copio su A
+        
+        // L[i] R[j] A[k]
+        int i=0,j=0,k=0;
+
+        for(k=p;k<=r;k++){
+            if(L[i]<R[j]){
+                A[k]=L[i++];
+            }
+
+            else{
+                A[k]=R[j++];
+            }
+        }
+    }
+
+    void mergeSort(int A[],int p, int r){
+        if(p<r){
+            int q=floor((p+r)/2);
+
+            mergeSort(A,p,q);
+            mergeSort(A,q+1,r);
+            merge(A,p,q,r);
+        }
+    }   
 }
 #endif
