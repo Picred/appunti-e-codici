@@ -57,11 +57,11 @@ class BST{
             }
         }
 
-        //INORDER
         void visit(BSTNode<T>* node){
             cout << *node << endl;
         }
-
+        
+        //INORDER
         void inOrder(BSTNode<T>* ptr){
             if(ptr==nullptr)
                 return;
@@ -76,7 +76,7 @@ class BST{
             inOrder(root);
         }
 
-        //IMPLEMENTAZIONE DI POSTORDER
+        //POSTORDER
         void postOrder(){
             postOrder(root);
         }
@@ -89,6 +89,21 @@ class BST{
             postOrder(ptr->right);
             visit(ptr);   
             }
+
+        //PREORDER
+        void preOrder(){
+            preOrder(root);
+        }
+
+        void preOrder(BSTNode<T>* ptr){
+            if(ptr==nullptr){
+                return;
+            }
+
+            visit(ptr);
+            preOrder(ptr->left);
+            preOrder(ptr->right);
+        }
 
         BSTNode<T>* min(){
             return min(root);

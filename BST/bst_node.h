@@ -12,13 +12,14 @@ class BSTNode{
         BSTNode<T>* right;
         BSTNode<T>* left;
         BSTNode<T>* parent;
+        bool verbose = false;
 
         template<typename U>
         friend class BST;
 
 
     public:
-        BSTNode(T key) : key(key){
+        BSTNode(T key, bool verbose=false) : key(key), verbose(verbose){
             right=nullptr;
             left=nullptr;
             parent=nullptr;
@@ -42,6 +43,9 @@ class BSTNode{
             this->key=key;
         }
 
+        void setVerbose(bool x){
+            this->verbose=x;
+        }
 
         //getter
 
@@ -63,10 +67,10 @@ class BSTNode{
         }
 
         friend ostream& operator<<(ostream& os, BSTNode<T>& node){
-            os << "BSTNode@=" << &node << " key=" << node.key;
-            os << " left=" << node.left << " right=" << node.right;
-            os << " parent=" << node.parent;
-
+            if(node.verbose)
+                os << "BSTNode@=" << &node << " key=" << node.key << " left=" << node.left << " right=" << node.right << " parent=" << node.parent;
+            else
+                os << "BSTNode key=" << node.key;
             return os;
         }
 
