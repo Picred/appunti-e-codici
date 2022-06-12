@@ -43,9 +43,6 @@ class BSTNode{
             this->key=key;
         }
 
-        void setVerbose(bool x){
-            this->verbose=x;
-        }
 
         //getter
 
