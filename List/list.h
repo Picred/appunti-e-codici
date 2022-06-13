@@ -12,13 +12,11 @@ class List {
         }
 
     //verifico lista vuota, quando head ==nullptr
-
     bool isEmpty(){
         return head==nullptr;
     }
-
+#pragma region "Inserimento"
     //inserimento di un valore val
-
     void insert(T val){
         //se la lista è vuota inserisco in testa
             if(this->isEmpty()){
@@ -39,22 +37,6 @@ class List {
         this->head=temp;
     }
 
-    //stampa di una lista
-    friend ostream& operator<<(ostream& os, List<T>& list){
-        if(list.isEmpty()){
-            os << "EMPTY LIST D:";
-            return os;
-        }
-        os << "List Head: " << list.head << endl;
-
-        Node<T>* ptr=list.head;
-
-            while(ptr != nullptr){
-                os << *ptr << endl; 
-                ptr=ptr->getNext();
-            } 
-        return os;
-    }
     //inserimento in coda
     void insertTail(T val){
         if(this->isEmpty()){
@@ -71,7 +53,6 @@ class List {
     }
 
     //inserimento in modo ordinato crescente
-
     void insertCrescente(T val){
         if((this->isEmpty()) || (val<=head->val)){
             this->insertHead(val);
@@ -119,7 +100,9 @@ class List {
         temp->next=ptr->next;
         ptr->next=temp;
     }
+#pragma endregion
 
+#pragma region "Eliminazioni"
     //eliminazione nodo di testa
     void removeHead(){
         if(this->isEmpty()){
@@ -153,7 +136,6 @@ class List {
     }
 
     //eliminazione di un nodo specifico
-
     void remove(T val){
         if(this->isEmpty()){
             cout << "Lista vuota, nulla da rimuovere :-( " << endl;
@@ -185,8 +167,23 @@ class List {
         prev->next=cur->next;
         delete cur;
     }
+#pragma endregion
+    //stampa di una lista
+    friend ostream& operator<<(ostream& os, List<T>& list){
+        if(list.isEmpty()){
+            os << "EMPTY LIST D:";
+            return os;
+        }
+        os << "List Head: " << list.head << endl;
 
-    
+        Node<T>* ptr=list.head;
+
+            while(ptr != nullptr){
+                os << *ptr << endl; 
+                ptr=ptr->getNext();
+            } 
+        return os;
+    }
 
 };
 
