@@ -15,6 +15,10 @@ class List {
     bool isEmpty(){
         return head==nullptr;
     }
+
+    Node<T>* getHead(){
+        return this->head;
+    }
 #pragma region "Inserimento"
     //inserimento di un valore val
     void insert(T val){
