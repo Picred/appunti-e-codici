@@ -70,7 +70,7 @@ class Graph{
             }            
         }
         
-        // Vertex<T>& search(T key){  //errata, modificata sotto
+        // Vertex<T>& search(T key){  //errata, modificato il return 
         //     if(this->nVertices==0)
         //         return NULL;
         //     for(int i=0; i<this->nVertices;i++){
