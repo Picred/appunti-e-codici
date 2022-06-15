@@ -13,7 +13,7 @@ class GraphVertex : public List<T>{
             List<T>::insertTail(key); //in questo modo ho già il nodo in testa inserito
         }
 
-        friend ostream& operator<<(ostream& out, GraphVertex<T> v){
+        friend ostream& operator<<(ostream& out, GraphVertex<T>& v){
             out << "Graph Vertex with key " << v.getHead()->getVal() << ": ";
             out << "\tAdjecency List: ";
             Node<T>* ptr = v.getHead();
