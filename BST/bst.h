@@ -199,24 +199,81 @@ class BST{
             return y;
         }
 
-        // BSTNode<T>* remove(T key){
-        //     if(this->isEmpty()){
-        //         return nullptr;
-        //     }
+        BSTNode<T>* remove(T key) {
+            if (this->isEmpty()) {
+                return nullptr;
+            }
 
-        //     BSTNode<T>* toRemove= this->search(key);
-        //     if(toRemove==nullptr)
-        //         return nullptr;
+            BSTNode<T>* node = search(key); //vado a trovare il nodo che devo eliminare
 
-        //     if(toRemove->right==nullptr && toRemove->left==nullptr){
-        //         if(toRemove->parent->right==toRemove)
-        //             toRemove->parent->right==nullptr;
-        //         else if(toRemove->parent->left==toRemove)
-        //             toRemove->parent->left==nullptr;
-        //         return toRemove;
-        //     }
-        //     // return toRemove;
-        // }
+            if (node == nullptr) {
+                return nullptr; //il nodo non è stato trovato
+            }
+            //il nodo è stato trovato
+            BSTNode<T>* toDelete = this->remove(node);
+            if (toDelete != nullptr) { //il nodo da rimuovere era una foglia oppure aveva un figlio
+                return toDelete;
+            }
+
+            //caso 3: nodo da eliminare ha 2 figli, non serve un altro if perchè è l'unica opzione rimasta
+            //sostituisco la chiave nel nodo da eliminare con la chiave del suo successore
+            BSTNode<T>* next = this->successor(node);
+            //sostituzione della chiave(swap)
+            T swap = node->key;
+            node->key = next->key;
+            next->key = swap;
+    //devo eliminare next, cioè il successore del nodo "da eliminare". Come?
+    //fare una funzione che gestisce separatamente i primi 2 casi e la funzione che 
+    //richiamo prenderà come parametro un BSTNode<T>* 
+    //richiamo la procedura di cancellazione dei primi 2 casi sul successore del nodo da eliminare visto che non ho più il caso 2 figli
+            toDelete = this->remove(next);
+
+            return toDelete;
+
+        }
+
+        BSTNode<T>* remove(BSTNode<T>* node) {
+            //qui facciamo il caso 1 e il caso 2
+            //caso 1 nodo è una foglia
+            if (node->left == nullptr && node->right == nullptr) {
+                if (node == node->parent->left)
+                    node->parent->left = nullptr;
+                else if (node == node->parent->right)
+                    node->parent->right = nullptr;
+
+                return node;
+            }
+
+            //caso 2 nodo ha 1 figlio
+
+            if (node->left == nullptr && node->right != nullptr) { //il nodo da eliminare ha un figlio destro
+                node->right->parent = node->parent;
+
+                if (node == node->parent->left) { //se node è figlio sinistro
+                    // node->right->parent = node->parent; //parent del figlio destro è il parent del nodo da eliminare 
+                    // spostato fuori dall'if perchè indipendente 
+                    node->parent->left = node->right;
+                }
+                else if (node == node->parent->right) {//se node è figlio destro
+                    node->parent->right = node->right;
+                }
+                return node;
+            }
+            //il nodo da eliminare ha un figlio sinistro
+            if (node->left != nullptr && node->right == nullptr) {
+                node->left->parent = node->parent;
+                //il nodo da eliminare è un figlio sx
+                if (node == node->parent->left) {
+                    node->parent->left = node->left;
+                }
+                //il nodo da eliminare è un figlio dx
+                else if (node == node->parent->right) {
+                    node->parent->right = node->left;
+                }
+                return node;
+            }
+            return nullptr;
+        }
 };
 
 
