@@ -193,7 +193,7 @@ class BST {
             //se il nodo è stato trovato
 
             BSTNode<T>* toDelete = this->remove(node);
-            if (toDelete != nullptr) {
+            if (toDelete != nullptr) { //il nodo da rimuovere era una foglia oppure aveva un figlio
                 return toDelete;
             }
 
