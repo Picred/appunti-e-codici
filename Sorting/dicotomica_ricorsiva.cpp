@@ -37,5 +37,5 @@ int main(){
         vett[i]=i;
     }
 
-    cout << dicotomica_ricorsiva(vett,0,10-1,-47);
+    cout << dicotomica_ricorsiva(vett,0,10-1,7);
 }
