@@ -178,7 +178,7 @@ class List {
             os << "EMPTY LIST D:";
             return os;
         }
-        os << "List Head: " << list.head << endl;
+        // os << "List Head: " << list.head << endl;
 
         Node<T>* ptr=list.head;
 

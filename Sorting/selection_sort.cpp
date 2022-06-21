@@ -11,7 +11,7 @@ void swap (int& x,int& y){
 
 void selection_sort(int* vett,int dim){
     int indexMin;
-    int temp=0;
+    
     for(int i=0;i<dim;i++){
         indexMin=i;
         for(int j=i+1;j<dim;j++){

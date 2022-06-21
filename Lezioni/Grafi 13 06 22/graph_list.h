@@ -16,10 +16,13 @@ class GraphVertex : public List<T>{
         friend ostream& operator<<(ostream& out, GraphVertex<T>& v){
             out << "Graph Vertex with key " << v.getHead()->getVal() << ": ";
             out << "\tAdjecency List: ";
-            Node<T>* ptr = v.getHead();
+            Node<T>* ptr = v.getHead(); 
+
             while (ptr){
-                out << " ->" << ptr->getVal();
+                
+                out  << ptr->getVal() << " -> ";
                 ptr=ptr->getNext();
+                
             }
             return out;
         }
@@ -27,9 +30,10 @@ class GraphVertex : public List<T>{
 
 template <typename T>
 class GraphList{
-    List< GraphVertex<T> > vertices;
-    int nVertices=0; //contatore dei vertici
-    bool isOriented;
+    private:
+        List< GraphVertex<T> > vertices;
+        int nVertices=0; //contatore dei vertici
+        bool isOriented;
     public:
         GraphList(bool isOriented=true):isOriented(isOriented){}
 
@@ -58,8 +62,8 @@ class GraphList{
                 return NULL;
             }
 
-            // GraphVertex<T>* ptr=vertices.getHead(); //è giusta la riga 46? cioè 48 in questo caso, no. Diventa
-            Node< GraphVertex<T> >* ptr=vertices.getHead();
+            // GraphVertex<T>* ptr=vertices.getHead(); //è giusta questa riga? Diventa
+            Node< GraphVertex<T> >* ptr=vertices.getHead(); //quindi ho cambiato il tipo di ritorno del metodo
             while(ptr){
                 if(key==ptr->getVal().getHead()->getVal()){ //la chiave è == alla head della lista del nodo?
                     return ptr;
