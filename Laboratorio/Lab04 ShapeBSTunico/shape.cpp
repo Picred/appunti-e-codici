@@ -195,6 +195,9 @@ int main(){
 
     //Stampo le code;
 
+    system("pause");
+    system("cls");
+
     cout << "----------CODE----------" << endl;
     
     cout << "Triangoli \n" << triangoli << endl << endl;
@@ -220,7 +223,9 @@ int main(){
             break;
         }
 	}
-
+    system("pause");
+    system("cls");
+    
     cout << "----------ALBERO----------" << endl;
 
     albero.inOrder();
