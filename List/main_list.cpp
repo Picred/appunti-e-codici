@@ -24,14 +24,13 @@ int main() {
     cout << list << endl;
     system("pause");
     system("cls");
-    cout << "----------Inserisco in modo crescente 37 e 8 in modo decrescente stampo----------" << endl;
+    cout << "----------Inserisco in modo crescente 37 e 8 in modo decrescente e stampo----------" << endl;
 
     list.insertCrescente(37);
     list.insertDecrescente(8);
 
         cout << list << endl;
     system("pause");
-    system("cls");
     cout << "----------Elimino due teste,una coda e il nodo 40 e stampo----------" << endl;
 
     list.removeHead();
@@ -40,6 +39,4 @@ int main() {
     list.remove(40);
 
     cout << list;
-    system("pause");
-    system("cls");
 }
