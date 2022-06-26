@@ -6,12 +6,12 @@
 
 #include <iostream>
 
-#define MAX_N 100
+#define MAX_N 20
 
 using namespace std;
 
 void leggiElementi(double vett[], int& dim){
-    cout << "Inserire i valori dell'array(max 100 elementi):";
+    cout << "Inserire i valori dell'array(20 elementi):";
     double el;
     // vett=new double[];
     for(int i=0; i<MAX_N; i++){
