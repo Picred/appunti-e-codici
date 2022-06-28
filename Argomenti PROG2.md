@@ -18,12 +18,12 @@ double r = min + (double) ((rand()) /( (double)((RAND_MAX/(max-min)))));
 ```
 
 ### Complessità degli algoritmi
-- Ricerca Dicotomica -> $O(log2n)$
-- Ordinamento per scambio-> $O(n^2$)
-- Insertion Sort-> $O(n^2)$
-- Selection Sort-> $O(n^2)$
-- Merge Sort -> $\Theta (n \cdot log \space n)$ $\forall$ per ogni tipo di input ---> dove Merge-> $\Theta (n)$
-- Quick Sort-> **MIGLIORE** Partition divide esattamente a metà l'array, quindi ci saranno meno chiamate ricorsive $\Theta (n \cdot log \space n)$ **PEGGIORE** $\Theta (n^2)$ ->L'array è totalmente sbilanciato come divisione e una parte è formata da un solo elemento e l'altra parte da n-1 elementi  
+- Ricerca Dicotomica -> θ(log2n)
+- Ordinamento per scambio-> O(n²)
+- Insertion Sort->O(n²)
+- Selection Sort-> O(n²)
+- Merge Sort -> θ(n logn) per ogni tipo di input ---> dove Merge->θ(n)
+- Quick Sort-> **MIGLIORE** Partition divide esattamente a metà l'array, quindi ci saranno meno chiamate ricorsive θ(n logn) **PEGGIORE** θ(n²)->L'array è totalmente sbilanciato come divisione e una parte è formata da un solo elemento e l'altra parte da n-1 elementi  
 
 - ### Operazioni su Liste:
 	- Inserimento in testa, in coda -> $O(1)$
@@ -43,8 +43,8 @@ double r = min + (double) ((rand()) /( (double)((RAND_MAX/(max-min)))));
 	- $O(log n)$ perchè l'input si dimezza ad ogni chiamata.
 
 - ### Operazioni sui grafi
-	- Accesso a vertice mediante lista di adiacenza -> $O(n)$
-	- Accesso a vertice mediante matrice di adiacenza -> $O(1)$
+	- Accesso a vertice mediante lista di adiacenza -> O(|V|)
+	- Accesso a vertice mediante matrice di adiacenza -> O(1)
 	- #### BFS
 		- Inizializzazione -> $\Theta (V)$
 		- Visita $O(|E|)$
