@@ -18,13 +18,12 @@ double r = min + (double) ((rand()) /( (double)((RAND_MAX/(max-min)))));
 ```
 
 ### Complessità degli algoritmi
-`Ricerca Dicotomica` -> $O(log2n)$
-`Ordinamento per scambio`-> $O(n^2$)
-`Insertion Sort` -> $O(n^2)$
-`Selection Sort` -> $O(n^2)$
-`Merge Sort` -> $\Theta (n \cdot log \space n)$ $\forall$ per ogni tipo di input ---> dove `Merge` -> $\Theta (n)$
-`Quick Sort` -> **MIGLIORE** Partition divide esattamente a metà l'array, quindi ci saranno meno chiamate ricorsive $\Theta (n \cdot log \space n)$ **PEGGIORE** $\Theta (n^2)$
-L'array è totalmente sbilanciato come divisione e una parte è formata da un solo elemento e l'altra parte da n-1 elementi  
+- Ricerca Dicotomica -> $O(log2n)$
+- Ordinamento per scambio-> $O(n^2$)
+- Insertion Sort-> $O(n^2)$
+- Selection Sort-> $O(n^2)$
+- Merge Sort -> $\Theta (n \cdot log \space n)$ $\forall$ per ogni tipo di input ---> dove Merge-> $\Theta (n)$
+- Quick Sort-> **MIGLIORE** Partition divide esattamente a metà l'array, quindi ci saranno meno chiamate ricorsive $\Theta (n \cdot log \space n)$ **PEGGIORE** $\Theta (n^2)$ ->L'array è totalmente sbilanciato come divisione e una parte è formata da un solo elemento e l'altra parte da n-1 elementi  
 
 - ### Operazioni su Liste:
 	- Inserimento in testa, in coda -> $O(1)$
