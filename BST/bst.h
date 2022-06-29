@@ -173,7 +173,7 @@ class BST{
 
             BSTNode<T>* y=x->parent;
 
-            while (x!=nullptr && x==y->right){
+            while (y!=nullptr && x==y->right){
                 x=y;
                 y=y->parent;
             }
