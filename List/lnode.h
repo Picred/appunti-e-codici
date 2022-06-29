@@ -21,6 +21,10 @@ class Node{
             return this->next;
         }
 
+        T getVal(){
+            return this->val;
+        }
+        
     friend ostream& operator<< (ostream& os, Node<T>& node){
         os << "node val:" << node.val << " " << &node <<  "\tnext=" << node.next;
         return os;
