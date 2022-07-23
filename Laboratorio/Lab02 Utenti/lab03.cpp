@@ -71,16 +71,23 @@ public:
             string s1=this->cognome;
             string s2=other.cognome;
 
-            int i;
-            for(i=0; i<s1.length() && i<s2.length();i++){
-                if(s1[i]<s2[i])
-                    return true;
+            int i=0;
+            while(i<s1.length() && i<s2.length() && s1[i] == s2[i]){
+                i++;
             }
+
+            if(s1[i] < s2[i]){
+                return true;
+            }
+            else{
+                return false;
+            }
+            /// abc
+            /// abccccc
             if(i==s1.length()){
                 return true;
             }
-
-            if(i==s2.length()){
+            else if(i==s2.length()){
                 return false;
             }
             return false;
@@ -125,8 +132,8 @@ void merge(Utente* vett, int p, int q, int r) {
         R[j-1] = vett[q + j]; //riempimento array R
     }
 
-    L[n1] = Utente(0,"zzzzzzzzzzzzzz","",0.0); //Utente con il cognome "Piu grande"
-    R[n2] = Utente(0,"zzzzzzzzzzzzzz","",0.0); //Utente con il cognome "Piu grande"
+    L[n1] = Utente(0,"ZZZ","",0.0); //Utente con il cognome "Piu grande"
+    R[n2] = Utente(0,"ZZZ","",0.0); //Utente con il cognome "Piu grande"
 
     //devo scorrere l'array R,L e il vett
     int i = 0, j = 0, k = p;
