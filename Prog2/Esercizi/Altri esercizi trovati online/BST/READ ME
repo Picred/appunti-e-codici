@@ -1,0 +1,38 @@
+BST
+La classe BST si appoggia alla classe "Nodo", contenente una chiave e tre nodi{left,right,parent}.
+
+La classe BST contiene il numero di elementi e due nodi{root, current}.
+I metodi presenti all'interno di esso sono: 
+Private:					Ausiliari			Public:				ausiliarie
+Nodo<T>* _search (T key, Nodo<T>* r) 		   //				int search (T key) 
+Nodo<T>* _min (Nodo<T>* r)	  		   //				T* min ()
+Nodo<T>* _max (Nodo<T>* r)  			   //				T* max ()
+Nodo<T>* _successore   (Nodo<T>* r)		 _min				T* successore   (T key)  	_search
+Nodo<T>* _predecessore (Nodo<T>* r)		 _max				T* predecessore (T key)		_search
+
+int  _prof   (T key, Nodo<T>* r)		   //				int prof(T key)
+int _altezza (Nodo<T>* r)                 _min,_prof,_successore                int altezza()     
+
+T _peso (Nodo<T>* r)				   //				T peso(T key)			_search			
+
+void _preorder  (ostream& os, Nodo<T>* r)	   //				void preorder  (ostream& os)
+void _inorder   (ostream& os, Nodo<T>* r)	   //				void inorder   (ostream& os)
+void _postorder (ostream& os, Nodo<T>* r)          //				void postorder (ostream& os)
+										
+										BST<T>& ins (T key)
+										BST<T>& canc(T key)		_search		
+										void reset()		      	_min
+										int hasNext()					
+										T* next()                      _successore
+
+Descrizioni:
+Esistono 3 procedure per visitare il BST:
+preorder (centro, sinistra, destra)
+inorder  (sinistra, centro, destra)
+postorder(sinistra, destra, centro)
+
+#_prof consiste in una ricerca con l'aggiunta di un contatore(relativo alla profondità)
+
+
+
+

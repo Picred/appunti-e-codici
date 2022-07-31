@@ -1,0 +1,5 @@
+Metodo fibonacci
+Consiste nel sommare tutti i predecessori partendo dal'indice 2 e salvare il risultato nella cella n+1
+#le prime due celle valgono 1
+
+#L'esercizio richiede una piccola modifica!
