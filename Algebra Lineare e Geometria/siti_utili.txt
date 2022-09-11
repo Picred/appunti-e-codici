@@ -1,0 +1,3 @@
+Risolutore sistemi lineari: https://wims.univ-cotedazur.fr/wims/it_tool~linear~linsolver.it.html
+Calcolatrice di matrici: https://matrixcalc.org/it/
+Geogebra per i grafici online: https://www.geogebra.org
