@@ -47,7 +47,7 @@ int main(){
         }
 
     //test distanza successore bst di char
-        if(bst_char.distanza_successore('k')==0){
+        if(bst_char.distanza_successore('k')==0){ //bisogna verificare i nullptr come la riga 42 perchè, con altri input, causa segmentation fault
             cout << "Non esiste il successore di k" <<endl;
         }
         else{
