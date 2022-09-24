@@ -1,0 +1,29 @@
+Si costruisca un oggetto ContoInBanca che memorizzi i seguenti dati:
+
+Numero di conto;
+Giacenza;
+Nome del proprietario;
+
+E permetta di eseguire queste operazioni:
+
+Ottenere il nome del proprietario;
+
+Ottenere il numero di conto;
+
+Ottenere la giacenza;
+
+Effettuare un prelievo;
+
+Effettuare un versamento;
+
+Pagare l’imposta di bollo (pari a 34,20 €);
+
+Pagare le spese mensili del conto (pari a 12 €);
+
+L’oggetto deve avere due costruttori:
+
+Un costruttore prende in input il nome del proprietario, il numero del conto e la giacenza;
+
+Un costruttore prende in input il nome del proprietario e il numero del conto, e imposta la giacenza a zero.
+
+Costruire una funzione main che definisca e utilizzi diversi conti correnti intestati a diverse persone.

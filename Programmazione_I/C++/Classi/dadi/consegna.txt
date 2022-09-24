@@ -1,0 +1,7 @@
+Progettare e implementare una classe CoppiaDiDadi composta da due oggetti Dado a sei facce. 
+
+Creare un file main.cpp che implementi una funzione main che tiri più volte l’oggetto CoppiaDiDadi
+
+contando il numero di doppi sei realizzati.
+
+Come si trovano il numero di coppie??

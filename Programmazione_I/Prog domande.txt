@@ -1,0 +1,90 @@
+Tipi di traduttori? Interpreti e Compilatori
+sistemi di numerazione e rappresentazione numeri segno esponente mantissa
+Errori IO
+File IO
+Static const friend? 
+	Static serve per condividere un'attributo fra tutti gli oggetti della stessa classe.
+	Va inizializzata fuori dalle classi e si chiamano attributi di classe.
+	Gli attributi di istanza sono gli attributi che ogni classe ha. Ogni volta che si istanzia
+		un oggetto, tale oggetto avrà degli attributi indipendenti.
+	E' possibile accedere agli attributi statici mediante metodi stadici + risolutore di scope(main)
+	
+	Metodi int getY const (); non possono modificare gli attributi privati della classe e non possono invocare
+		metodi non const.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+dynamic_cast restituisce il cast se è possibile eseguirlo a run time, altrimenti un nullptr.
+
+namespace cosa sono? In caso di 2 funzioni con lo stesso nome 
+
+Overloading degli operatori: a cosa serve? e saperli tutti
+
+FREESTORE Parte di memoria dove si possono allocare dinamicamente elementi. si accede con dei puntatori
+
+Nome di un array?  Puntatore costante al primo elemento
+
+Variabile puntatore cos'è?
+
+References devono essere inizializzate. Da una funzione è possibile restituire un reference
+
+Classi template? operano su tipi generici definiti più avanti nel codice. Istanziare oggetti di classe template
+come si fa?
+
+Distruttore cos'è? Un metodo che si usa per liberare la locazione di memoria di un determinato oggetto. Viene
+viene invocato quando viene chiamato mediante delete in modo esplicito 
+
+delete? operatori che lavora insieme all'operatore new. Con delete si usa un puntatore all'oggetto allocato nel
+	freestore
+x* ptr = new x; //puntatore
+delete ptr; (rivedere)
+Il distruttore viene chiamato automaticamente quando l'oggetto viene distrutto. Allocando oggetto sullo stack, 
+il distruttore viene invocato alla fine del programma (nel main) OPPURE Se l oggetto è stato dichiarato come variabile
+locale di qualche funzione, dopo l'esecuzione della funzione, l'oggetto dichiarato all'interno di uno scope smette
+di esistere alla fine di essa.
+Funzioni? blocchi di codice che pososno essere usati nel programma. prototipo:
+
+la classe figlia deve inizializzare e scrivere il costrutture della classe madre se quest'ultima non ha un costruttore di default mediante la lista di inizializzazione
+
+COSTRUTTORE DI COPIA: come si scrive? a che serve? Serve a copiare oggetti dello stesso tipo (?)
+
+Modificatori accesso ereditarierà: private public protected
+
+Stack, heap, segmento teta??? ecc allocazione dinamica e statica. Dove vengono memorizzare le variabili globali? all'interno del segmento teata(?)

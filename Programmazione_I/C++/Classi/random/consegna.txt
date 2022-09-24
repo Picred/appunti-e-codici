@@ -1,0 +1,13 @@
+Implementare una clase Random per la generazione di numeri pseudocasuali. La funzione deve possedere:
+
+Un costruttore di default che imposta un seed che dipende dall’ora attuale;
+
+Un costruttore che permette di impostare un seed che dipende dall’ora passata in input (tipo tipe_t);
+
+Un costruttore che permette di impostare il seed passato in input al costruttore.
+
+Un metodo generateDouble che prende in input due parametri double a e b e genera un numero compreso tra a e b. 
+Se nessun parametro è passato al metodo, si assume che a=0 e b=1;
+
+Un metodo generateInt che prende in input due parametri int a e b e genera un numero compreso tra a e b. 
+Se nessun parametro è passato al metodo, si assume a=0 e b=RAND_MAX.

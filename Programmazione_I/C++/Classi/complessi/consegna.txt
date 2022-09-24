@@ -1,0 +1,10 @@
+Creare una classe Complesso per la gestione dei numeri complessi (un numero complesso è costituito da
+due numeri reali double: parte reale e parte immaginaria), Le operazioni da implementare sono le seguenti:
+
+un costruttore che prenda in input due double e inizializzi lo stato dell’oggetto;
+
+un metodo stampa che permette di stampare il numero complesso;
+
+dei metodi somma, divisione, prodotto e sottrazione che prendano in input un numero complesso e 
+permettano di effettuare le operazioni aritmetiche tra l’oggetto di cui sono funzioni membro e quello 
+ricevuto in input.

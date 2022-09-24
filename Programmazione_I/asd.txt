@@ -1,0 +1,18 @@
+s[i]= rand()%('z' - 'a' + 1) +'a'; genera lettere casuali fra [a,z]
+
+Overloading ++ membro su classe figlia B:
+	B operator++(int a){
+            B aux = *this;
+            p++;
+            return aux;
+        }
+main: incremento la variabile int della classe figlia B
+B* auxx=nullptr;
+    for(int i=0; i<DIM && auxx==nullptr;i++){
+        if(typeid(*vett[i]) == typeid(B)){
+            auxx= ((B*)vett[i]);
+            (*auxx)++;
+        }
+//oppure 
+(*((B*)vett[0]))++; senza variabile ausiliaria
+

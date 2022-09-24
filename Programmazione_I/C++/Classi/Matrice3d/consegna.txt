@@ -1,0 +1,22 @@
+Implementare una classe Matrice3D. In particolare:
+• il costruttore deve permettere allo usercode di specificare
+le tre dimensioni della matrice, ed un ulteriore valore con
+cui inizializzare tutti gli elementi della matrice; specificare
+argomenti standard sia per le dimensioni, che per il valore
+di inizializzazione;
+• i metodi getDimX(), getDimY(), getDimZ();
+• un metodo stampa(), che stampi tutti gli elementi della
+matrice;
+
+un metodo sommaByPtr che prenda in input due
+parametri formali di tipo puntatore a Matrice3D e
+restituisca la somma delle due matrici come puntatore al
+tipo Matrice3D;
+• un metodo sommaByReference che prenda in input due
+parametri formali reference al tipo Matrice3D e
+restituisca la somma delle due matrici come reference al
+tipo Matrice3D;
+• un metodo getElement(int x, int y, int z) che
+restituisca un reference all’elemento di indici x, y, e z.
+• un metodo getValue(int x, int y, int z) che
+restituisca il valore dello elemento di indici x, y, e z.

@@ -1,0 +1,33 @@
+Si implementi una classe Stanza che rappresenti una 
+stanza di una casa. La classe dovrà contenere 
+informazioni sul nome (es. stanza da pranzo) 
+e sulle dimensioni (si assuma che la stanza è 
+rettangolare) e prmettere di calcolare la superficie 
+della stanza. 
+
+Si implementi una classe Bagno 
+contenenti le dimensioni (si assumano bagni 
+rettangolari) e che permetta di calcolare la 
+superficie del bagno. Si costruiscano dunque le 
+seguenti classi:
+
+Bivani: contiene una stanza da letto, una cucina e un 
+bagno;
+
+Trivani: contiene due stanze da letto, una cucina e 
+un bagno;
+
+Quadrivani: contiene una cucina, un soggiorno, due 
+stanze da letto e due bagni.
+
+Ciascuna delle classi implementate sopra dovrà 
+permettere di calcolare la superficie 
+dell’appartamento e dovrà avere un riferimento al 
+proprietario dell’appartamento, un oggetto di tipo 
+Persona. Ciascuna delle classi implementate dovrà 
+anche possedere un metodo sommario() che stampi un 
+sommario delle caratteristiche della casa.
+
+Si costruisca un programma che costruisca diversi 
+appartamenti appartenenti a diverse persone e 
+visualizzi informazioni su di essi.

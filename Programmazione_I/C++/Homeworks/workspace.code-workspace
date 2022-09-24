@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Prove"
+		},
+		{
+			"path": "..\\..\\PROG1\\Esempi"
+		},
+		{
+			"path": "..\\Merry christmas"
+		},
+		{
+			"path": "..\\Esercizi prove passate"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"limits": "cpp",
+			"iomanip": "cpp",
+			"random": "cpp",
+			"array": "cpp",
+			"ctime": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
