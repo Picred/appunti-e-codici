@@ -37,4 +37,7 @@
 - Esercizi
 
 # Contributi
-- Se vuoi contribuire all'ampliamento di questa repository sentiti libero di scrivermi su [Telegram](http://telegram.me/picred1)
+Se vuoi contribuire all'ampliamento di questa repository puoi:
+- scrivermi su [Telegram](http://telegram.me/picred1)
+- creare una issue per segnalare problemi
+- creare una Pull Request per proporre cambiamenti
