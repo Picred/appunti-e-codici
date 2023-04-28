@@ -1,2 +1,11 @@
-**/*png
-**/*md
+# General files
+**/*.png
+**/*.md
+
+# C/C++ compiled files
+**/*.o
+**/*.out
+**/*.exe
+
+# Java compiled files
+**/*.class
