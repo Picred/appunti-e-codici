@@ -69,18 +69,29 @@ void save_user_info(const char* user, const char* ip, const int port, const char
 
     FILE* file = fopen(sourceFile, "a"); //vedere modalità di scrittura
 
+    // sprintf(port, "%d", port); //converto int in stringa (atoi è il contrario)
+    //conversione di port in stringa
+    char port_str[4];
+    sprintf(port_str, "%d", port);
+
     //scrivo su file
-    char to_write = "";
-    // username
-
-    //   Ip
-
-    //   Port
-
-    //   list_of_files
     
-    // CONCATENAZIONE DI TUTTE LE INFORMAZIONI QUI ..... SONO ARRIVATO QUA
-    fprintf(file, to_write);
+    int info_len = strlen(user) + strlen(ip) + strlen(port_str) + strlen(list_of_files)
+                + strlen("Username") + strlen("Ip") + strlen("Port") + strlen("List_of_files") + 4; // 4 per i 4 "\n"
+    char to_write[info_len];
+
+    strcat(to_write, "Username\n");
+    strcat(to_write, user);
+    strcat(to_write, "\nIp\n");
+    strcat(to_write, ip);
+    strcat(to_write, "\nPort\n");
+    strcat(to_write, port_str);
+    strcat(to_write, "\nList_of_files\n");
+    strcat(to_write, list_of_files);
+
+    fprintf(file, "%s" ,to_write);
+    
+    
     // Costruzione del comando di spostamento del file
     char command[100];
     snprintf(command, sizeof(command), "mv %s %s/%s", sourceFile, destinationFolder, sourceFile);
@@ -92,81 +103,74 @@ void save_user_info(const char* user, const char* ip, const int port, const char
         printf("Il file '%s' è stato scritto e spostato in '%s'.\n", sourceFile, destinationFolder);
     else 
         printf("Errore durante lo spostamento del file.\n");
-        return -1;
+        return;
 }
 
-int main(int argc, char** argv) {
-    
-    return 0;
+int main(){
+    // save_user_info("user", "192.192.192.192", 5656, "file1.txt,file2.txt");
+    //funziona solo se si è root
+    int n = rename("info.txt", "user/info.txt");
+    printf("%d", n);
 }
 
 
 // -------- MAIN ----------------------------
-// int main(int argc, char** argv) {
-//     int sockfd;
-//     struct sockaddr_in local_addr, client_addr;
-//     socklen_t len = sizeof(struct sockaddr_in);
-//     char buffer[MAX_BUFFER_SIZE];
+int main2(int argc, char** argv) {
+    int sockfd;
+    struct sockaddr_in local_addr, client_addr;
+    socklen_t len = sizeof(struct sockaddr_in);
+    char buffer[MAX_BUFFER_SIZE];
 
-//     if (argc != 2) {
-//         perror("Usage: <server_port>\n");
-//         return 0;
-//     }
+    if (argc != 2) {
+        perror("Usage: <server_port>\n");
+        return 0;
+    }
 
-//     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-//         perror("Errore apertura socket");
-//         return -1;
-//     }
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+        perror("Errore apertura socket");
+        return -1;
+    }
 
-//     memset(&local_addr, 0, len);
-//     local_addr.sin_family = AF_INET;
-//     local_addr.sin_port = htons(atoi(argv[1]));
-//     local_addr.sin_addr.s_addr = INADDR_ANY;
+    memset(&local_addr, 0, len);
+    local_addr.sin_family = AF_INET;
+    local_addr.sin_port = htons(atoi(argv[1]));
+    local_addr.sin_addr.s_addr = INADDR_ANY;
 
-//     if (bind(sockfd, (struct sockaddr*)&local_addr, len) < 0) {
-//         perror("Errore nella bind");
-//         return -1;
-//     }
+    if (bind(sockfd, (struct sockaddr*)&local_addr, len) < 0) {
+        perror("Errore nella bind");
+        return -1;
+    }
 
-//     char user[MAX_USERNAME_LEN], list_of_files[MAX_FILES_STR];
-//     int n, user_port;
+    char user[MAX_USERNAME_LEN], list_of_files[MAX_FILES_STR];
+    int n, user_port;
 
-//     //--------- ricevo username ---------------------------------------
-//     n = recvfrom(sockfd, buffer, MAX_USERNAME_LEN - 1, 0, (struct sockaddr*)&client_addr, &len);
-//     buffer[n] = 0;
-//     strcpy(user, buffer);
-//     strcpy(buffer, check_user(buffer));
+    //--------- ricevo username ---------------------------------------
+    n = recvfrom(sockfd, buffer, MAX_USERNAME_LEN - 1, 0, (struct sockaddr*)&client_addr, &len);
+    buffer[n] = 0;
+    strcpy(user, buffer);
+    strcpy(buffer, check_user(buffer));
 
-//     printf("%s -> %s\n", user, buffer); //log
+    printf("%s -> %s\n", user, buffer); //log
 
-//     sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr*)&client_addr, len); //risposta login effettuato (eventualmente + registrazione)
+    sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr*)&client_addr, len); //risposta login effettuato (eventualmente + registrazione)
 
-//     //---------- ricevo file disponibili per la copia -------------------
-//     n = recvfrom(sockfd, list_of_files, MAX_FILES_STR - 1, 0, (struct sockaddr*)&client_addr, &len);
-//     list_of_files[n] = 0;
+    //---------- ricevo file disponibili per la copia -------------------
+    n = recvfrom(sockfd, list_of_files, MAX_FILES_STR - 1, 0, (struct sockaddr*)&client_addr, &len);
+    list_of_files[n] = 0;
 
-//     printf("File disponibili per la copia per l'utente: %s \n -> %s \n", user, list_of_files); // log
+    printf("File disponibili per la copia per l'utente: %s \n -> %s \n", user, list_of_files); // log
 
-//     // --------- ricevo la porta di ascolto per questo user -------------
-//     n = recvfrom(sockfd, buffer, MAX_BUFFER_SIZE - 1, 0, (struct sockaddr*)&client_addr, &len);
-//     buffer[n] = '\0';
-//     user_port = atoi(buffer);
+    // --------- ricevo la porta di ascolto per questo user -------------
+    n = recvfrom(sockfd, buffer, MAX_BUFFER_SIZE - 1, 0, (struct sockaddr*)&client_addr, &len);
+    buffer[n] = '\0';
+    user_port = atoi(buffer);
 
-//     printf("Porta client: %d\n", user_port); //log
-//     /*
-//     fine punto 1.
-//     Creo cartella per user appena registrato. Conterrà info.txt cosi formato:
-//     username
+    printf("Porta client: %d\n", user_port); //log
+    /*
+    fine punto 1
+    */
+    save_user_info(user, inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), list_of_files);
 
-//     Ip
-
-//     Port
-
-//     list_of_files
-//     */
-    
-//     save_user_info(user, inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), list_of_files);
-
-//     close(sockfd);
-//     return 0;
-// }
+    close(sockfd);
+    return 0;
+}
