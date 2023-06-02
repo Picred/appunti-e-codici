@@ -1,8 +1,0 @@
-’PÆyVUsername
-user
-Ip
-192.192.192.192
-Port
-5656
-List_of_files
-file1.txt,file2.txt

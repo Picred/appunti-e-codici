@@ -28,6 +28,38 @@ Usare C o C++. Niente grafica.
 #include <string.h>
 #include <arpa/inet.h>
 
+void connect_to(const char* ip){
+    // Setto la ip e porta da tastiera e mi connetto TCP all'user
+    int sockfd, newsockfd, port;
+    struct sockaddr_in remote_client_addr;
+    socklen_t len = sizeof(struct sockaddr_in);
+
+    if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
+        perror("Errore apertura socket");
+        return;
+    }
+
+    memset(&remote_client_addr, 0, len);
+    remote_client_addr.sin_family = AF_INET;
+    remote_client_addr.sin_port = htons(port);
+    remote_client_addr.sin_addr.s_addr = inet_addr(ip);
+
+    if(connect(sockfd, (struct sockaddr*) &remote_client_addr, len) < 0){
+        perror("Errore connessione con l'ip fornito perchè non è in ascolto: ");
+        return;
+    }
+
+    printf("Connesso con l'ip %s\n", ip);
+
+    // comunicazione con l'altro client -> invio il nome del file da scaricare
+    for(;;){
+
+    }
+
+
+}
+
+
 int main(int argc, char** argv){
     int sockfd;
     struct sockaddr_in local_addr, server_addr;
@@ -74,8 +106,30 @@ int main(int argc, char** argv){
     scanf("%s", user_port);
     sendto(sockfd, user_port, sizeof(user_port), 0, (struct sockaddr*)&server_addr, len);
 
-    //Errore: bisogna inviare la porta e farla ricevere correttamente al server
-    //fine punto 1
+    char command[50];
+    do{
+        printf("Inserisci il comando: <exit> <lista_utenti> <get_user_files -user> <get_user_info -user> <connect_to -ip>: ");
+        scanf("%s", command);
+        sendto(sockfd, command, strlen(command), 0, (struct sockaddr*)&server_addr, len);
+
+        if(strstr(command, "connect_to -")){
+            char separatore[] = "connect_to -";
+            char *ip;
+
+            ip = strstr(command, separatore);
+            if (ip != NULL)
+                ip += strlen(separatore);
+            
+            connect_to(ip);
+            break;
+        }
+
+        n = recvfrom(sockfd, buffer, 499, 0, (struct sockaddr*)&server_addr, &len);
+        buffer[n] = 0;
+        printf("Risposta ricevuta al comando dal server: %s\n", buffer);
+
+    } while(strcmp(command, "exit") != 0);
+
     close(sockfd);
     return 0;
 }

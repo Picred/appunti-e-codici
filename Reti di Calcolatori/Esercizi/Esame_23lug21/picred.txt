@@ -1,0 +1,8 @@
+Username
+picred
+Ip
+100.100.100.100
+Port
+5656
+List_of_files
+file1.txt,file2.txt,file3.txt
