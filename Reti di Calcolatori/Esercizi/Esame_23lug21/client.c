@@ -51,11 +51,18 @@ void connect_to(const char* ip){
 
     printf("Connesso con l'ip %s\n", ip);
 
-    // comunicazione con l'altro client -> invio il nome del file da scaricare
+    // comunicazione con l'altro client -> invio il nome del file da scaricare. Un processo ascolta e un altro si mette in comunicazione
     for(;;){
+        newsockfd = accept(sockfd, (struct sockaddr*)&remote_client_addr, &len);
 
+        if(!fork()){
+            // figlio, comunicazione con l'altro client
+            
+        }
+        else{
+            close(newsockfd);
+        }
     }
-
 
 }
 
@@ -90,6 +97,7 @@ int main(int argc, char** argv){
     // (login) o (registrazione + login)
     sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr*)&server_addr, len);
 
+    memset(&buffer, 0, sizeof(buffer));
     int n = recv(sockfd, buffer, 499, 0); // server ACK
     buffer[n]= 0;
 
@@ -106,11 +114,16 @@ int main(int argc, char** argv){
     scanf("%s", user_port);
     sendto(sockfd, user_port, sizeof(user_port), 0, (struct sockaddr*)&server_addr, len);
 
-    char command[50];
+    char command[100];
     do{
         printf("Inserisci il comando: <exit> <lista_utenti> <get_user_files -user> <get_user_info -user> <connect_to -ip>: ");
-        scanf("%s", command);
-        sendto(sockfd, command, strlen(command), 0, (struct sockaddr*)&server_addr, len);
+        fgets(command, sizeof(command), stdin);
+
+        // Rimuovi il carattere di newline dalla stringa letta da fgets
+        size_t len = strlen(command);
+        if (len > 0 && command[len - 1] == '\n') {
+            command[len - 1] = '\0';
+        }
 
         if(strstr(command, "connect_to -")){
             char separatore[] = "connect_to -";
@@ -123,6 +136,8 @@ int main(int argc, char** argv){
             connect_to(ip);
             break;
         }
+
+        sendto(sockfd, command, strlen(command), 0, (struct sockaddr*)&server_addr, len);
 
         n = recvfrom(sockfd, buffer, 499, 0, (struct sockaddr*)&server_addr, &len);
         buffer[n] = 0;
