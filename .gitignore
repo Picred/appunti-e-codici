@@ -1,6 +1,6 @@
 # General files
 **/*.png
-**/*.md
+#**/*.md
 
 # C/C++ compiled files
 **/*.o
