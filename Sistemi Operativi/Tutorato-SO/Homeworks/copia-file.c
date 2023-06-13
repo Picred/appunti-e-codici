@@ -36,7 +36,10 @@ int copy_file(const char* src,char dst[]){
 int main(int argc, char** argv){
 
     //leggi argomento per argomento fino ad argc-2 e fai la copia nella cartella di destinazione che sarà argc-1
-
+    if (argc <3 ){
+        printf("Usage: <src_file1> <src_file2> ... <dst_dir>\n");
+        return EXIT_FAILURE;
+    }
     char dest_path[strlen(argv[argc-1])];
     strcpy(dest_path,argv[argc-1]);
 
