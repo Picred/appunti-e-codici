@@ -18,9 +18,9 @@ int copy_file(const char* src,char dst[]){
     strcat(dst_path, "/");
     strcat(dst_path, src);
 
-    FILE* source_file = fopen(src, "rb");
+    FILE* source_file = fopen(src, "r");
     // FILE* dst_file = fopen(dst_path, "w");
-    FILE* dst_file = fopen(dst_path, "wb");
+    FILE* dst_file = fopen(dst_path, "w");
 
     if(source_file == NULL) printf("\nok source\n");
     if(dst_file == NULL) printf("\nok destination     %s\n", dst_path);
