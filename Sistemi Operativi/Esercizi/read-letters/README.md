@@ -1,4 +1,4 @@
-# Consegna
+# Descrizione
 
 Implementa un programma che utilizzi i thread per leggere un file di testo e analizzare il suo contenuto lettera per lettera. Il programma dovrà trasformare ogni lettera in minuscolo e attivare il thread corrispondente, denominato AL (A-L) o MZ (M-Z), in base al valore della lettera.
 
