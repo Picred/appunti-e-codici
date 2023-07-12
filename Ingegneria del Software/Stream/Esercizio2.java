@@ -1,3 +1,4 @@
+package Stream;
 /*
 * Data una lista di istanze di Persona trovare i diversi ruoli.
 */

@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Data una lista di terne di numeri interi, per ciascuna terna verificare se essa costituisce un triangolo. Restituire la lista dei perimetri per le
  * terne che rappresentano triangoli.

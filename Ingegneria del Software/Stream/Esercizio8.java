@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Produrre una lista contenente i primi n multipli di 7.
 */

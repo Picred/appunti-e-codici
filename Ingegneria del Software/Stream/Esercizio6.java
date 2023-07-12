@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Data una lista di numeri interi positivi, verificare se la lista è ordinata.
 */

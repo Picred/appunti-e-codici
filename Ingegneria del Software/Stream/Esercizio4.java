@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Data una lista di stringhe, produrre una stringa contenente le iniziali di ciascuna stringa della lista
 */

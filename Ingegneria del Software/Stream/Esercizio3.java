@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Data una lista di stringhe, produrre una lista che contiene solo le stringhe che cominciano con un certo prefisso noto
 */

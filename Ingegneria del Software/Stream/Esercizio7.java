@@ -1,3 +1,4 @@
+package Stream;
 /*
  * Data una lista di prodotti, restituire il costo totale dei prodotti che hanno un prezzo maggiore di 10.
 */
