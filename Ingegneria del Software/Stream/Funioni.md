@@ -16,6 +16,7 @@
 
 # STATEFULL
 - [**T**] .<font color = "red">max</font>(Comparator.comparing(Persona::getEta)) : Optional\<T>
+    
     - [**T**] .<font color = "red">min</font>(Comparator.comparing(Persona::getEta)) : Optional\<T>
     - Ricerca il max/min valore nello Stream
     - usa ```isPresent():boolean``` oppure ```isEmpty():boolean``` con ```Optional<T>```
@@ -78,7 +79,7 @@
     ```
 
 
-- [**I**] <font color = "red">.map </font> (Function\<T,R> mapper) : Stream\<T>
+- [**I**] <font color = "red">.map </font> (Function\<T,R> mapper) : Stream\<R>
     - **Trasforma** lo Stream\<T> in Stream\<R> per ogni elemento
     ```java
     Function<String,Integer> stringLength = x -> x.length();
@@ -192,7 +193,8 @@ Comparator<Persona> myComp = (p1, p2) -> p1.getEta() - p2.getEta();
 // > 0 se p1 > p2
 Optional<Persona> pmax = amici.stream()
                                 .filter(x -> x.getEta() < 20)
-                                .max(myComp);
+                                .max(myComp)
+                                .orElse(0); // Se Optional è null, torna 0 (specificato fra parentesi)
 // Ovvero
 .max((p1, p2) -> p1.getEta() - p2.getEta());
 

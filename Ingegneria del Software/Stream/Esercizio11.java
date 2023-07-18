@@ -1,7 +1,6 @@
 package Stream;
-
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /*
@@ -14,9 +13,16 @@ public class Esercizio11 {
 
     public static Stream<Integer> getLatoMinore(){
         return l.stream()
-                .map(f -> IntStream.of(f.l1(), f.l2(), f.l3(), f.l4()))
-                .map(s -> s.min)
-                .boxed();
-                // .forEach(System.out::println);
+                .map(f -> List.of(f.l1(), f.l2(), f.l3(), f.l4())
+                                .stream()
+                                .min(Comparator.naturalOrder())
+                                .orElse(0));
+    }
+
+    public static void main(String[] args) {
+            Stream<Integer> latoMinoreStream = getLatoMinore();
+            List<Integer> latoMinoreList = latoMinoreStream.toList();
+    
+            System.out.println(latoMinoreList);
     }
 }
