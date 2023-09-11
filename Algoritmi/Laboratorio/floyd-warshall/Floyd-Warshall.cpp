@@ -1,6 +1,5 @@
 #include "Graph.cpp"
 
-
 using namespace std;
 
 template <class H, class T> int floydWarshall(Graph<H, T>* graph, T**& dist, int**& pred)
@@ -130,16 +129,16 @@ template <class H, class T> void printPath(Graph<H, T>* graph, int* pred[], H &s
 int main()
 {
 	Graph<char, int>* g = new Graph<char, int>(6);
-	g->addNode('A')->addRootNode('C')->addRootNode('B')->addNode('D')->addNode('E')->addNode('F');
-	g->addEdge('C', 'B', 4)->addEdge('C', 'A', 19)->addEdge('B', 'A', 1)->addEdge('B', 'D', 2)->addEdge('A', 'D', 9)->addEdge('D', 'E', 3)->addEdge('B', 'E', 8)->addEdge('E', 'C', 1)->addEdge('F', 'A', 5)->addEdge('F', 'C', -1);
+	g->addNode('1')->addRootNode('2')->addRootNode('3')->addNode('4')->addNode('5');
+	g->addEdge('1', '2', 5)->addEdge('1', '4', 1)->addEdge('3', '2', 1)->addEdge('4', '2', 3)->addEdge('4', '3', 1)->addEdge('4', '5', 3);
 	g->print();	
 	cout << endl<< "Floyd-Warshall:" << endl <<endl;
 	int** distances;
 	int** pred;
 	floydWarshall(g, distances, pred);
 	printDistances(g, distances, pred);
-	char s = 'F';
-	char e = 'E';
+	char s = '4';
+	char e = '1';
 	cout << endl << "The path from " << s << " to " << e << " is :" << endl;
 	printPath(g, pred, s, e);
 	return 1;
