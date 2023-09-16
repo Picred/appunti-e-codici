@@ -1,3 +1,5 @@
+// Coded by Picred (https://github.com/Picred)
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -140,7 +142,7 @@ int main(int argc, char const *argv[]){
     int nodes, edges;
     string type; // (int double)
 
-    for(int i=0; i<3; i++){
+    for(int i=0; i<100; i++){
         in >> nodes >> edges >> type;
         if(type == "double")
             solve<double>(in, out, nodes, edges);
