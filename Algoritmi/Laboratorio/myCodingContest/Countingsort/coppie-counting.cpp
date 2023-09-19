@@ -2,98 +2,105 @@
 
 #include <iostream>
 #include <fstream>
-#include <cmath>
-
 
 using namespace std;
 
+template<class T>
 class Coppia{
     private:
-        double el1, el2;
+        T first, second;
     public:
-        Coppia(){
-            el1=0.0;
-            el2=0.0;
+        Coppia(T f, T s){
+            first = f;
+            second = s;
         }
 
-        Coppia(double x, double y){
-            this->el1 = x;
-            this->el2 = y;
+        T getFirst(){return first;}
+        T getSecond(){return second;}
+
+        friend bool operator<(Coppia &a, Coppia &b){
+            if(a.first < b.first) 
+                return 1;
+            return 0;
         }
 
-        double getFirst(){
-            return this->el1;
-        }
-        
-        double getSecond(){
-            return this->el2;
+        friend bool operator>(Coppia &a, Coppia &b){
+            if(a.first > b.first) 
+                return 1;
+            return 0;
         }
 
-        friend ostream& operator<<(ostream& out, Coppia c){
-            out << "(" << c.el1 << "," << c.el2 << ")";
-            return out;
-        }
-
-        void print(){
-
+        void print(ofstream &out){
+            out << "(" << first << " " << second << ") ";
         }
 };
 
-Coppia** counting_sort(Coppia** A, int n){
-    //max e min
-    double Max = A[0]->getFirst();
-    double min = A[0]->getFirst();
+Coppia<double>** counting_sort(Coppia<double>** coppie, int n, ofstream &out){
+    //find max & min indexs
+    // double to int -> el * 10
+    Coppia<int>** A = new Coppia<int>*[n+1];
 
-    for(int i=1; i<n; i++){
-        if(A[i]->getFirst() < min)
-            min = A[i]->getFirst();
+    for(int i=1; i<=n; i++)
+        A[i] = new Coppia<int>(coppie[i]->getFirst()*10, coppie[i]->getSecond()*10);
+
+    int max = 1;
+    int min = 1;
+    int k;
+
+    for(int i=2; i<=n; i++){
+        if (A[i]->getFirst() < A[min]->getFirst())
+            min = i;
         
-        if(A[i]->getFirst() > Max)
-            Max = A[i]->getFirst();
+        if (A[i]->getFirst() > A[max]->getFirst())
+            max = i;
     }
 
-    int k =(Max - min) + 1;
-    int* C = new int[k];
+    k = A[max]->getFirst() - A[min]->getFirst() + 1;
+    min = A[min]->getFirst();
+    max = A[max]->getFirst();
 
-    for(int i=0; i<k; i++){
-        C[i] = 0;
-    }
-    
-    for(int i=0; i<k; i++){
-        int index = floor(A[i]->getFirst() - min);
-        C[index]+=1;
-        cout << C[i] << " ";
+    int* C = new int[k+1]{0};
+
+    for(int i=1; i<=n; i++){
+        C[A[i]->getFirst()-min+1]++;
     }
 
-    for(int i=1; i<n; i++){
+    for(int i=1; i<=k; i++){
         C[i]+=C[i-1];
     }
 
-    Coppia** B = new Coppia*[n];
+    Coppia<double>** B = new Coppia<double>*[n+1];
 
-    for(int i=n-1; i>=0; i--){
-        int index = floor(A[i]->getFirst() - min);
-        B[--C[index]] = A[i];
+    for(int i=n; i>=1; i--){
+        B[C[A[i]->getFirst()-min+1]] = new Coppia<double>(double(A[i]->getFirst()/10.0), A[i]->getSecond()/10.0);
+        C[A[i]->getFirst()-min+1]--;
     }
 
-    return B;
 
+    //print C su out
+    for(int i=1; i<=k; i++){
+        out << C[i] << " ";
+    }
+    return B;
 }
 
-
 void solve(ifstream& in, ofstream& out, int n){
-    Coppia** A = new Coppia*[n];
+    Coppia<double>** coppie = new Coppia<double>*[n+1];
 
-    for(int i=0; i<n; i++){
-        double el1, el2;
+    for(int i=1; i<=n; i++){
         char tmp;
+        double first, second;
 
-        in >> tmp >> el1 >> tmp >> el2 >> tmp;
-        A[i] = new Coppia(el1, el2);
+        in >> tmp >> first >> second >> tmp;
+        coppie[i] = new Coppia(first, second);
     }
 
-    Coppia** B = counting_sort(A, n);
-
+    Coppia<double>** res = counting_sort(coppie, n, out);
+    
+    for(int i=1; i<=n; i++){
+        res[i]->print(out);
+    }
+    out << endl;
 }
 
 int main(){
@@ -102,7 +109,7 @@ int main(){
     
     int n;
 
-    for(int i=0; i<3; i++){
+    for(int i=0; i<100; i++){
         in >> n;
         solve(in,out,n);
     }

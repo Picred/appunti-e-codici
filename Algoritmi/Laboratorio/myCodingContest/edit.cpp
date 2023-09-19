@@ -8,13 +8,11 @@ using namespace std;
 void solve(ifstream& in, ofstream& out, string x, string y, int n, int m){
     int c[n+1][m+1];
 
-    // init
     for(int i=0; i<=m; i++)
         c[0][i] = i;
     
     for(int i=0; i<=n; i++)
         c[i][0] = i;
-
 
     for(int i=1; i<=n; i++){
         for(int j=1; j<=m; j++){
@@ -27,9 +25,7 @@ void solve(ifstream& in, ofstream& out, string x, string y, int n, int m){
             c[i][j] = min(min(c[i-1][j]+1, c[i][j-1]+1), c[i-1][j-1]+p);
         }
     }
-
     out << c[n][m] << endl;
-
 }
 
 int main(){
