@@ -61,13 +61,11 @@ Coppia<double>** counting_sort(Coppia<double>** coppie, int n, ofstream &out){
 
     int* C = new int[k+1]{0};
 
-    for(int i=1; i<=n; i++){
+    for(int i=1; i<=n; i++)
         C[A[i]->getFirst()-min+1]++;
-    }
 
-    for(int i=1; i<=k; i++){
+    for(int i=1; i<=k; i++)
         C[i]+=C[i-1];
-    }
 
     Coppia<double>** B = new Coppia<double>*[n+1];
 
@@ -76,11 +74,9 @@ Coppia<double>** counting_sort(Coppia<double>** coppie, int n, ofstream &out){
         C[A[i]->getFirst()-min+1]--;
     }
 
-
-    //print C su out
-    for(int i=1; i<=k; i++){
+    for(int i=1; i<=k; i++)
         out << C[i] << " ";
-    }
+
     return B;
 }
 
@@ -97,9 +93,9 @@ void solve(ifstream& in, ofstream& out, int n){
 
     Coppia<double>** res = counting_sort(coppie, n, out);
     
-    for(int i=1; i<=n; i++){
+    for(int i=1; i<=n; i++)
         res[i]->print(out);
-    }
+
     out << endl;
 }
 
