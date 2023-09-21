@@ -1,57 +1,42 @@
 #include <iostream>
 #include <fstream>
-#include <bits/stdc++.h>
 
 using namespace std;
-
-
 
 void counting_sort(int* A, int n, ofstream& out){
     int max = A[0];
     int min = A[0];
-
+    
+    // find max/min
     for(int i=1; i<n; i++){
         if (A[i] > max)
             max = A[i];
-    }
-
-    for(int i=1; i<n; i++){
         if (A[i] < min)
             min = A[i];
     }
 
     int K = (max-min)+1;
-
     int* C = new int[K]{0};
 
-    for(int i=0; i<n; i++){
+    for(int i=0; i<n; i++)
         C[A[i]-min]++;
-    }
 
-    for(int i=1; i<K; i++){
+    for(int i=1; i<K; i++)
         C[i]+= C[i-1];
-    }
 
     int* B = new int[n]{0};
 
-    for(int i=n-1; i>=0; i--){
+    for(int i=n-1; i>=0; i--)
         B[--C[A[i]-min]] = A[i];
-    }
 
-    // Print
-    for(int i=0; i<K; i++){
+    for(int i=0; i<K; i++)
         out << C[i] << " ";
-    }
 
-    for(int i=0; i<n; i++){
+    for(int i=0; i<n; i++)
         out << B[i] << " ";
-    }
     
     out << endl;
-
 }
-
-
 
 int main(int argc, char const *argv[]){
     ifstream in("input.txt");
