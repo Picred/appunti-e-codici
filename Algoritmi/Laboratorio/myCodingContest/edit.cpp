@@ -21,7 +21,6 @@ void solve(ifstream& in, ofstream& out, string x, string y, int n, int m){
                 p=0;
             else 
                 p=1;
-            
             c[i][j] = min(min(c[i-1][j]+1, c[i][j-1]+1), c[i-1][j-1]+p);
         }
     }

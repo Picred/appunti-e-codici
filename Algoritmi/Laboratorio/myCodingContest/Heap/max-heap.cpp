@@ -57,7 +57,7 @@ class MaxHeap{
         void insert(T key){
             if(heapsize == 0){
                 heapsize++;
-                heap[1] = key; // da rivedere l'indice
+                heap[1] = key;
                 return;
             }
             

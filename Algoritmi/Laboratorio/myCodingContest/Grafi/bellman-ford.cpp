@@ -5,13 +5,11 @@
 #include <string>
 #include <climits>
 
-//da rivedere perchè stampa output sbagliato. (con 3 input funziona ma con 100 no)
-
 using namespace std;
 
 class Edge{
     private:
-        int start, end, w; // w=weight
+        int start, end, w;
     public:
         Edge(int start, int end, int w){
             this->start = start;
@@ -19,17 +17,9 @@ class Edge{
             this->w = w;
         }
 
-    int getStart(){
-        return start;
-    }
-
-    int getEnd(){
-        return end;
-    }
-
-    int getWeight(){
-        return w;
-    }
+    int getStart(){return start;}
+    int getEnd(){return end;}
+    int getWeight(){return w;}
 };
 
 template<class T>
@@ -41,15 +31,12 @@ class Graph{
         Edge** edges;
         int nEdges, maxEdges;
 
-    int search_node_index(T node){
-        for(int i = 0; i<nNodes; i++){
-            if (nodes[i] == node){
-                return i;
-            }
+        int search_node_index(T node){
+            for(int i = 0; i<nNodes; i++)
+                if (nodes[i] == node)
+                    return i;
+            return -1;
         }
-        return -1;
-    }
-
     public:
         Graph(int maxN, int maxE){
             this->maxNodes = maxN;
@@ -80,7 +67,7 @@ class Graph{
                 dist[i] = INT_MAX;
             dist[source] = 0;
 
-            for(int i=1; i<nNodes; i++){
+            for(int i=1; i<nNodes; i++)
                 for(int j=0; j<nEdges; j++){    
                     int start = edges[j]->getStart();
                     int end = edges[j]->getEnd();
@@ -89,7 +76,6 @@ class Graph{
                     if(dist[start] != INT_MAX && dist[start] + weight < dist[end])
                         dist[end] = dist[start] + weight;
                 }
-            }
 
             for(int j = 1; j < nEdges; j++){
                 int start = edges[j]->getStart();
@@ -125,9 +111,9 @@ template<class T> void solve(ifstream& in, ofstream& out, int nodes, int edges){
         char tmp;
         T u,v;
         int p;
-        in >> tmp >> u >> tmp >> v >> tmp >> p >> tmp;
+        in >> tmp >> u >> v >> p >> tmp;
         g.addEdge(u, v, p);
-    }
+    }   
 
     T source, dest;
     in >> source >> dest;
