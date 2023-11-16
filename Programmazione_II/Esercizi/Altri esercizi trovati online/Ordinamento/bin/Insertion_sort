@@ -1,9 +1,0 @@
-L'algoritmo consiste nel: 
-1)Confrontiamo i primi due elementi
-2)Se il primo e maggiore del secondo allora entriamo in un ciclo for e cicliamo 
-fino a quando non troviamo un numero che sia più piccolo
-3)effettuiamo uno swap
-
-Non è molto diverso dal modo in cui un essere umano, spesso, ordina un mazzo di carte, è un algoritmo in place, cioè ordina l'array senza doverne creare una copia, risparmiando memoria. Pur essendo molto meno efficiente di algoritmi più avanzati, può avere alcuni vantaggi: ad esempio, è semplice da implementare ed è efficiente per insiemi di partenza che sono quasi ordinati.
-
-
