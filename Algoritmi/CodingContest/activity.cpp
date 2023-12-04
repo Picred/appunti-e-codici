@@ -1,3 +1,5 @@
+// Coded by Picred (https://github.com/Picred)
+
 #include <iostream>
 #include <fstream>
 using namespace std;

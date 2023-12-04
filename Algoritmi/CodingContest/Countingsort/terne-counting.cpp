@@ -5,112 +5,82 @@
 
 using namespace std;
 
-template<class T>
-class Tripla{
-    private:
-        T first, second, third;
-    public:
-        Tripla(T f, T s, T t){
-            first = f;
-            second = s;
-            third = t;
-        }
+template<class T>class Terna{
+public:
+    T first, second, third;
+    
+    Terna(T f, T s, T t) : first(f), second(s), third(t){}
 
-        T getFirst(){return first;}
-        T getSecond(){return second;}
-        T getThird(){return third;}
+    friend ostream& operator<<(ostream& out, Terna& t){
+        out << "(" << t.first << " " << t.second << " " << t.third << ")";
+        return out; 
+    }
 
-        friend bool operator<(Tripla &a, Tripla &b){
-            if(a.first < b.first) 
-                return 1;
-            return 0;
-        }
-
-        friend bool operator>(Tripla &a, Tripla &b){
-            if(a.first > b.first) 
-                return 1;
-            return 0;
-        }
-
-        void print(ofstream &out){
-            out << "(" << first << " " << second << " " << third << ") ";
-        }
+    friend bool operator<(Terna& t1, Terna& t2){
+        if(t1.first < t2.first) return true;
+        return false;
+    }
 };
 
-Tripla<double>** counting_sort(Tripla<double>** triple, int n, ofstream &out){
-    //find max & min indexs
-    // double to int -> el * 10
-    Tripla<int>** A = new Tripla<int>*[n+1];
+Terna<double>** counting_sort(Terna<double>** terne, int n, ofstream& out){
+    Terna<int>** A = new Terna<int>*[n];
 
-    for(int i=1; i<=n; i++)
-        A[i] = new Tripla<int>(triple[i]->getFirst()*10, triple[i]->getSecond()*10, triple[i]->getThird()*10);
+    for(int i=0; i<n; i++)
+        A[i] = new Terna<int>(terne[i]->first*10,terne[i]->second*10,terne[i]->third*10);
+    
+    int min = A[0]->first;
+    int max = A[0]->first;
 
-    int max = 1;
-    int min = 1;
-    int k;
-
-    for(int i=2; i<=n; i++){
-        if (A[i]->getFirst() < A[min]->getFirst())
-            min = i;
-        
-        if (A[i]->getFirst() > A[max]->getFirst())
-            max = i;
+    for(int i=0; i<n; i++){
+        if(A[i]->first < min)
+            min = A[i]->first;
+        if(A[i]->first > max)
+            max = A[i]->first;
     }
 
-    k = A[max]->getFirst() - A[min]->getFirst() + 1;
-    min = A[min]->getFirst();
-    max = A[max]->getFirst();
+    int k = max-min+1;
+    int C[k] = {0};
 
-    int* C = new int[k+1]{0};
-
-    for(int i=1; i<=n; i++){
-        C[A[i]->getFirst()-min+1]++;
-    }
-
-    for(int i=1; i<=k; i++){
+    for(int i=0; i<n; i++)
+        C[A[i]->first - min]++;
+    
+    for(int i=1; i<k; i++)
         C[i]+=C[i-1];
-    }
-
-    Tripla<double>** B = new Tripla<double>*[n+1];
-
-    for(int i=n; i>=1; i--){
-        B[C[A[i]->getFirst()-min+1]] = new Tripla<double>(double(A[i]->getFirst()/10.0), double(A[i]->getSecond()/10.0), double(A[i]->getThird()/10.0));
-        C[A[i]->getFirst()-min+1]--;
-    }
-
-    for(int i=1; i<=k; i++){
+    
+    Terna<double>** B = new Terna<double>*[n];
+    for(int i=n-1; i>=0; i--)
+        B[--C[A[i]->first-min]] = new Terna<double>((double)(A[i]->first/10.0),(double)(A[i]->second/10.0),(double)(A[i]->third/10.0));
+    
+    for(int i=0; i<k; i++)
         out << C[i] << " ";
-    }
+
     return B;
 }
 
-void solve(ifstream& in, ofstream& out, int n){
-    Tripla<double>** triple = new Tripla<double>*[n+1];
+template<class T>void solve(ifstream& in, ofstream& out, int n){
+    Terna<double>** terne = new Terna<double>*[n];
 
-    for(int i=1; i<=n; i++){
+    for(int i=0; i<n; i++){
+        T f, s, t;
         char tmp;
-        double first, second, third;
-
-        in >> tmp >> first >> second >> third >> tmp;
-        triple[i] = new Tripla(first, second, third);
+        in >> tmp >> f >> s >> t >> tmp;
+        terne[i] = new Terna(f,s,t);
     }
 
-    Tripla<double>** res = counting_sort(triple, n, out);
-    
-    for(int i=1; i<=n; i++){
-        res[i]->print(out);
-    }
-    out << endl;
+    Terna<double>** B = counting_sort(terne, n, out);
+
+    for(int i=0; i<n; i++)
+        out << *B[i] << " ";
+    out << endl;        
 }
+
 
 int main(){
     ifstream in("input.txt");
     ofstream out("output.txt");
-    
     int n;
-
     for(int i=0; i<100; i++){
         in >> n;
-        solve(in,out,n);
+        solve<double>(in,out,n);
     }
 }
