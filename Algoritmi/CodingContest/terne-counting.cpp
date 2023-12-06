@@ -1,5 +1,3 @@
-// Coded by Picred (https://github.com/Picred)
-
 #include <iostream>
 #include <fstream>
 
@@ -8,14 +6,11 @@ using namespace std;
 template<class T>class Terna{
 public:
     T first, second, third;
-    
     Terna(T f, T s, T t) : first(f), second(s), third(t){}
-
     friend ostream& operator<<(ostream& out, Terna& t){
         out << "(" << t.first << " " << t.second << " " << t.third << ")";
         return out; 
     }
-
     friend bool operator<(Terna& t1, Terna& t2){
         if(t1.first < t2.first) return true;
         return false;
@@ -73,7 +68,6 @@ template<class T>void solve(ifstream& in, ofstream& out, int n){
         out << *B[i] << " ";
     out << endl;        
 }
-
 
 int main(){
     ifstream in("input.txt");

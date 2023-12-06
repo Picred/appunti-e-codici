@@ -6,33 +6,29 @@
 using namespace std;
 
 template<class T>
-class Tripla{
+class Coppia{
     private:
-        T first, second, third;
+        T first, second;
     public:
-        Tripla(T f, T s, T t){
+        Coppia(T f, T s){
             first = f;
             second = s;
-            third = t;
         }
 
         T getFirst(){return first;}  
         T getSecond(){return second;}
-        T getThird(){return third;}
 
-        friend ostream& operator<<(ostream& out, Tripla& t){
-            out << "(" << t.first << " " << t.second << " " << t.third << ")";
+        friend ostream& operator<<(ostream& out, Coppia& c){
+            out << "(" << c.first << " " << c.second << ")";
             return out;
         }
-        
-        friend bool operator>(Tripla &a, Tripla &b){
+
+        friend bool operator>(Coppia &a, Coppia &b){
         if(a.first > b.first)
-            return 1;
+            return true;
         else if(a.first == b.first && a.second > b.second)
-            return 1;
-        else if(a.first == b.first && a.second == b.second && a.third > b.third)
-            return 1;
-        return 0;
+            return true;
+        return false;
     }
 };
 
@@ -40,7 +36,7 @@ class Tripla{
 template<class T>
 class MaxHeap{
     private:
-        Tripla<T>** heap;
+        Coppia<T>** heap;
         int heapsize;
         int fycalls;
 
@@ -76,7 +72,7 @@ class MaxHeap{
         }
 
     public:
-        MaxHeap(Tripla<T>** arr, int dim){
+        MaxHeap(Coppia<T>** arr, int dim){
             this->heap=arr;
             heapsize=dim;
             fycalls=0;
@@ -111,21 +107,20 @@ class MaxHeap{
 
 
 template<class T> void solve(ifstream& in, ofstream& out, int n){
-    Tripla<T>** coppie = new Tripla<T>*[n+1];
+    Coppia<T>** coppie = new Coppia<T>*[n+1];
 
     for(int i=1; i<n+1; i++){
         char tmp;
-        T first, second, third;
+        T first, second;
 
-        in >> tmp >> first >> second >> third >> tmp;
-        coppie[i] = new Tripla(first, second, third);
+        in >> tmp >> first >> second >> tmp;
+        coppie[i] = new Coppia<T>(first, second);
     }
 
     MaxHeap<T> heap = MaxHeap<T>(coppie, n);
     heap.build();
     heap.heapsort(n);
     heap.print(out, n);
-
 }
 
 int main(){
