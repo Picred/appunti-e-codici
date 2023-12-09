@@ -3,17 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <libgen.h>
 
 #define BUFFER_SIZE 16
 
-int main(int argc, char* argv[]){
+int main(int argc, char** argv){
     int sockfd;
     struct sockaddr_in remote_addr;
     socklen_t len = sizeof(struct sockaddr_in);
     char buffer[BUFFER_SIZE];
     
     if(argc != 3){
-        printf("Usage: %s <ip> <port>\n", basename(argv[0]));
+        printf("Usage: ./%s <ip> <port>\n", basename(argv[0]));
         return EXIT_FAILURE;
     }
 
