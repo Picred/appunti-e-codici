@@ -16,7 +16,6 @@
 - Ricevimenti
 
 # Analisi I
-- Appunti
 - Prove d'esame
 - Esercizi
 
@@ -24,27 +23,20 @@
 - Appunti (Xournal Files)
 
 # Interazione e Multimedia
-- Appunti di teoria
 - Esami passati svolti di Laboratorio
-- Appunti (grezzi) di Laboratorio
 
 # Programmazione I
 - Esercizi definizione di funzione
 - Esercizi su classi e oggetti
-- Appunti di teoria
 - Esempi di codici
 - Slide Lezioni
 - Laboratorio
 
 # Programmazione II
-- Appunti di teoria
 - Strutture dati
 - Algoritmi di ordinamento
 - Complessità
 - Esercizi
-
-# Database
-- Appunti
 
 # Contributi
 Se vuoi contribuire all'ampliamento di questa repository puoi:
