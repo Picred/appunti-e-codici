@@ -1,5 +1,6 @@
 # INDICE
 
+0. Appunti scritti <a href="https://www.docsity.com/it/utenti/profilo/picred/home/">qui</a>
 1. [Algebra lineare e Geometria](#algebra-lineare-e-geometria) --- [Apri](https://github.com/Picred/appunti-e-codici/tree/main/Algebra%20Lineare%20e%20Geometria)
 2. [Analisi I](#analisi-i) --- [Apri](https://github.com/Picred/appunti-e-codici/tree/main/Analisi_I)
 3. [Analisi II](#analisi-ii) -- [Apri](https://github.com/Picred/appunti-e-codici/tree/main/Analisi_II)
